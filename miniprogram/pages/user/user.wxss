@@ -1,0 +1,33 @@
+/* miniprogram/pages/user/user.wxss */
+page, .container {
+  width: 100%;
+  height: 100%;
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30rpx;
+}
+.info image {
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+}
+.info text {
+  font-size: 30rpx;
+  margin: 30rpx 0;
+}
+
+.main {
+  margin: 30rpx;
+}
+
+.authorize {
+  width: 100%;
+  height: 60%;
+  z-index: 9;
+  position: fixed;
+  left: 0;
+  top: 0;
+}

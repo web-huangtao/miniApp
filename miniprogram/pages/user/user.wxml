@@ -1,0 +1,46 @@
+<!--miniprogram/pages/user/user.wxml-->
+<view class='container'>
+  <!-- 用户信息 -->
+  <block wx:if="{{isLogin}}">
+    <view class='info'>
+      <image src='{{info.avatarUrl}}' />
+      <text>{{info.nickName}}</text>
+    </view>
+  </block>
+  <block wx:else>
+    <button class='authorize' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo"></button>
+    <view class='info'>
+      <image src='/images/unlogin.png' />
+      <text>请登录</text>
+    </view>
+  </block>
+  <!-- main -->
+  <view class='main'>
+    <van-cell
+      icon="manager-o"
+      is-link
+      title="单元格"
+      link-type="navigateTo"
+      url=""
+    />
+    <van-cell
+      icon="label-o"
+      is-link
+      title="单元格"
+      link-type="navigateTo"
+      url=""
+    />
+    <van-cell
+      icon="shop-o" 
+      is-link
+      title="单元格"
+    />
+    <van-cell
+      icon="setting-o"
+      is-link
+      title="单元格"
+      link-type="navigateTo"
+      url=""
+    />
+  </view>
+</view>
