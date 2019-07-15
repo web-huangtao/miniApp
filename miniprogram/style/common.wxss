@@ -1,0 +1,13 @@
+.image-cropper .btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  bottom: 20rpx;
+  z-index: 10;
+}

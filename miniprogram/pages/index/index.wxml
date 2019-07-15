@@ -1,4 +1,12 @@
 <!--index.wxml-->
 <view class="container">
-  <van-button type="default">默认按钮</van-button>
+  <van-button type="primary" bind:click="showDialog">上传图片</van-button>
+  <image src="{{src}}"></image>
+  <view class='image-cropper' hidden="{{!uploadDialog}}">
+    <image-cropper id="image-cropper" limit_move="{{true}}" disable_rotate="{{true}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindimageload="loadimage"></image-cropper>
+    <view class='btn'>
+      <van-button type="default" bind:click="cancel">取 消</van-button>
+      <van-button type="primary" bind:click="submit">确 定</van-button>
+    </view>
+  </view>
 </view>
