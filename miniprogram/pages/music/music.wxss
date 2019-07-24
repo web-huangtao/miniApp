@@ -1,0 +1,9 @@
+/* miniprogram/pages/music/music.wxss */
+.banner {
+  width: 100%;
+  height: 300rpx;
+  background: red;
+}
+.list {
+  
+}

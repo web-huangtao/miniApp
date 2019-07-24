@@ -21,7 +21,7 @@
       is-link
       title="单元格"
       link-type="navigateTo"
-      url=""
+      url="/pages/show/show"
     />
     <van-cell
       icon="label-o"

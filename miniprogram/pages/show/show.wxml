@@ -1,0 +1,37 @@
+<!--miniprogram/pages/show/show.wxml-->
+<view class='container'>
+  <swiper vertical="true" circular="true" bindchange="changePage">
+    <swiper-item>
+      <van-transition
+        show="{{show1}}"
+        name=""
+        duration="{{ { enter: 3000, leave: 2000 } }}"
+        custom-class="dome"
+        enter-class="van-enter-class"
+        enter-active-class="van-enter-active-class"
+        leave-active-class="van-leave-active-class"
+        leave-to-class="van-leave-to-class"
+      >
+        飞入
+      </van-transition>
+      <van-transition
+        show="{{show1}}"
+        name="fade"
+        duration="{{ { enter: 10000, leave: 5000 } }}"
+        custom-class="dome dome2"
+      >
+        淡入
+      </van-transition>
+      <view wx:if="{{show1}}" class='dome a-rotateinLT'>1223</view>
+    </swiper-item>
+    <swiper-item>
+      <view wx:if="{{show2}}" class='dome all-flash'></view>
+    </swiper-item>
+    <swiper-item>3</swiper-item>
+  </swiper>
+  <image class='music all-rotate' src='/images/music/yinle.png'></image>
+  <view class='up' animation="{{upIcon}}">
+    <van-icon name="arrow-up" />
+  </view>
+  <view class='num'>{{current + 1}}/3</view>
+</view>

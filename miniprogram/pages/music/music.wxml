@@ -1,0 +1,7 @@
+<!--miniprogram/pages/music/music.wxml-->
+<view class='container'>
+  <image class='banner' src=''></image>
+  <view class='list'>
+    
+  </view>
+</view>

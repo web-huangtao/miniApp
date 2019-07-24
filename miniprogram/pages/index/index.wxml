@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view class="container">
   <van-button type="primary" bind:click="showDialog">上传图片</van-button>
-  <image src="{{src}}"></image>
+  <image src="{{cutImg}}"></image>
   <view class='image-cropper' hidden="{{!uploadDialog}}">
     <image-cropper id="image-cropper" limit_move="{{true}}" disable_rotate="{{true}}" width="{{width}}" height="{{height}}" imgSrc="{{src}}" bindimageload="loadimage"></image-cropper>
     <view class='btn'>

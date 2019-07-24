@@ -7,41 +7,41 @@ Page({
     src: '',
     width: 250, // 宽度
     height: 250, // 高度
+    cutImg: ''
   },
-
+  /**
+   * 生命周期函数--监听页面加载
+   */
   onLoad: function() {
     this.isLogin()
   },
+
+  /**
+   * 上传图片
+   */
   showDialog() {
     // 获取到image-cropper对象
     this.cropper = this.selectComponent("#image-cropper")
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],
-      sourceType: ['album', 'camera'],
-      success: res => {
-        wx.showLoading({
-          title: '加载中',
-        })
-        const tempFilePaths = res.tempFilePaths[0]
-        // 重置图片角度、缩放、位置
-        this.cropper.imgReset()
-        this.setData({
-          uploadDialog: true,
-          src: tempFilePaths
-        })
-      }
-    })
+    this.cropper.upload()
   },
   
+  /**
+   * 裁剪图片
+   */
   loadimage(e) {
     wx.hideLoading();
     //重置图片角度、缩放、位置
     this.cropper.imgReset();
+    this.setData({
+      src: e.detail.path,
+      width: 250, // 宽度
+      height: 250, // 高度
+      uploadDialog: true
+    })
   },
 
   /**
-   * 取消按钮
+   * 裁剪图片：取消按钮
    */
   cancel() {
     this.setData({
@@ -50,11 +50,14 @@ Page({
   },
 
   /**
-   * 提交按钮
+   * 裁剪图片：提交按钮
    */
   submit() {
-    this.setData({
-      uploadDialog: false
+    this.cropper.getImg((e) => {
+      this.setData({
+        cutImg: e.url,
+        uploadDialog: false
+      })
     })
   },
 
