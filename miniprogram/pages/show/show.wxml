@@ -29,8 +29,8 @@
     </swiper-item>
     <swiper-item>3</swiper-item>
   </swiper>
-  <image class='music all-rotate' src='/images/music/yinle.png'></image>
-  <view class='up' animation="{{upIcon}}">
+  <image bindtap='playOrPause' class='music all-rotate {{isMusic ? "" : "pauseMusic"}}' src='/images/music/yinle.png'></image>
+  <view class='up all-upHide'>
     <van-icon name="arrow-up" />
   </view>
   <view class='num'>{{current + 1}}/3</view>
