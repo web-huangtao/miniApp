@@ -28,10 +28,33 @@
       <view wx:if="{{show2}}" class='dome all-flash'></view>
     </swiper-item>
     <swiper-item>3</swiper-item>
+    <swiper-item>
+      <view class="comment">
+        <view style="width: 100%; height: 390rpx; position: absolute; left: 0; z-index: 9;" catchtouchmove="return"></view>
+        <swiper class="commentList" autoplay="true" circular="true" vertical="true" display-multiple-items="3">
+          <block wx:for="{{list}}" wx:key="{{index}}">
+            <swiper-item >
+              <view class="comment-item">
+                <view class="comment-item-left">
+                  <image src="{{item.avatarUrl}}"></image>
+                  <text>{{item.nickName}}</text>
+                </view>
+                <text class="comment-item-right">{{item.msg}}</text>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+        <view class="sendMsg">
+          <input bindblur="getMsg"></input>
+          <van-button type="primary" bind:click="sendMsg">评论</van-button>
+        </view>
+
+      </view>
+    </swiper-item>
   </swiper>
   <image bindtap='playOrPause' class='music all-rotate {{isMusic ? "" : "pauseMusic"}}' src='/images/music/yinle.png'></image>
   <view class='up all-upHide'>
     <van-icon name="arrow-up" />
   </view>
-  <view class='num'>{{current + 1}}/3</view>
+  <view class='num'>{{current + 1}}/4</view>
 </view>

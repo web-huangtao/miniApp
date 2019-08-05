@@ -19,7 +19,7 @@
     <van-cell
       icon="manager-o"
       is-link
-      title="单元格"
+      title="动画"
       link-type="navigateTo"
       url="/pages/show/show"
     />

@@ -31,6 +31,65 @@ swiper {
   right: 30rpx;
   bottom: 20rpx;
 }
+.comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 500rpx;
+  position: fixed;
+  left: 0;
+  bottom: 30rpx;
+}
+.commentList {
+  width: 100%;
+  height: 390rpx;
+  overflow: hidden;
+  font-size: 24rpx;
+}
+.comment-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 100rpx;
+  box-sizing: border-box;
+  padding: 0 50rpx;
+  margin-bottom: 30rpx;
+}
+.comment-item-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120rpx;
+  margin-right: 30rpx;
+}
+.comment-item-left image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.comment-item-right {
+  flex: 1;
+}
+.sendMsg {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.sendMsg input {
+  flex: 1;
+  height: 80rpx;
+  border: 1px solid #666;
+  border-radius: 10rpx;
+  padding: 0 30rpx;
+  margin-right: 30rpx;
+}
+
 
 .dome {
   width: 300rpx;
@@ -44,6 +103,7 @@ swiper {
 .dome2 {
   background: green;
 }
+
 .van-enter-active-class,
 .van-leave-active-class {
   transition-property: transform;

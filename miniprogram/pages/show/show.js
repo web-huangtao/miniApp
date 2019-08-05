@@ -12,7 +12,25 @@ Page({
     show1: true,
     show2: false,
     show3: false,
-    current: 0
+    current: 0,
+    list: [{
+      nickName: '哈哈',
+      avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLhxd1cN1QqqVFoXaD2lVvribtWhywckvJOOYDib25NQyW1LENG6csEXCcS1k3uQmmlm9ytiaXVdaKVQ/132',
+      msg: '抢沙发'
+    }, {
+      nickName: '嘿嘿',
+      avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLhxd1cN1QqqVFoXaD2lVvribtWhywckvJOOYDib25NQyW1LENG6csEXCcS1k3uQmmlm9ytiaXVdaKVQ/132',
+      msg: '我来评论啦'
+      }, {
+      nickName: '呵呵',
+      avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLhxd1cN1QqqVFoXaD2lVvribtWhywckvJOOYDib25NQyW1LENG6csEXCcS1k3uQmmlm9ytiaXVdaKVQ/132',
+      msg: '我也来评论啦'
+      }, {
+      nickName: '哼哼',
+      avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLhxd1cN1QqqVFoXaD2lVvribtWhywckvJOOYDib25NQyW1LENG6csEXCcS1k3uQmmlm9ytiaXVdaKVQ/132',
+      msg: '来凑波热闹'
+    }],
+    msg: ''
   },
 
   /**
@@ -29,7 +47,7 @@ Page({
     innerAudioContext.autoplay = true
     innerAudioContext.src = 'cloud://ht-test.6874-ht-test/music/1.mp3'
     innerAudioContext.onPlay(() => {
-      console.log('开始播放')
+      // console.log('开始播放')
     })
     innerAudioContext.onEnded((res) => {
       this.playMusic()
@@ -71,6 +89,37 @@ Page({
         clearInterval(temper)
       }
     }, 300)
+  },
+
+  /**
+   * 输入框
+   */
+  getMsg(e) {
+    this.setData({
+      msg: e.detail.value
+    })
+  },
+
+  /**
+   * 评论
+   */
+  sendMsg() {
+    const { msg } = this.data
+    if (msg === '') {
+      wx.showToast({
+        title: '评论不能为空',
+        icon: 'none'
+      })
+      return
+    }
+    const params = this.data.list.concat([{
+      avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLhxd1cN1QqqVFoXaD2lVvribtWhywckvJOOYDib25NQyW1LENG6csEXCcS1k3uQmmlm9ytiaXVdaKVQ/132',
+      nickName: '呃呃',
+      msg: this.data.msg
+    }])
+    this.setData({
+      list: params
+    })
   },
 
   /**
