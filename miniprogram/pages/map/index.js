@@ -9,7 +9,10 @@ Page({
   data: {
     longitude: 0,
     latitude: 0,
-    destination: ''
+    scale: 16,
+    markers: [],
+    polyline: [],
+    destination: '' // 目的地
   },
 
   /**
@@ -67,7 +70,15 @@ Page({
         var res = res.result
         var latitude = res.location.lat
         var longitude = res.location.lng
+        var pl = [{ 
+          latitude: this.data.latitude, 
+          longitude: this.data.longitude 
+        }, {
+          latitude: latitude, 
+          longitude: longitude
+        }]
         this.setData({
+          scale: 14,
           markers: [{
             id: 0,
             title: res.title,
@@ -76,7 +87,12 @@ Page({
             iconPath: '',//图标路径
             width: 20,
             height: 20
-          }]  
+          }],
+          polyline: [{
+            points: pl,
+            color: '#FF0000DD',
+            width: 4
+          }]
         })
       },
       fail: err => {
