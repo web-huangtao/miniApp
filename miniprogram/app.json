@@ -4,7 +4,8 @@
     "pages/news/news",
     "pages/user/user",
     "pages/show/show",
-    "pages/music/music"
+    "pages/music/music",
+    "pages/map/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -12,6 +13,11 @@
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "云开发 QuickStart",
     "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "以便为您提供更精细化服务"
+    }
   },
   "tabBar": {
     "list": [
@@ -44,6 +50,7 @@
     "van-cell": "/miniprogram_npm/vant-weapp/cell/index",
     "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
     "van-transition": "/miniprogram_npm/vant-weapp/transition/index",
+    "van-field": "/miniprogram_npm/vant-weapp/field/index",
     "image-cropper": "/miniprogram_npm/image-cropper/image-cropper"
   },
   "requiredBackgroundModes": [

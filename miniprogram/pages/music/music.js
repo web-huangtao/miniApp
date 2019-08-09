@@ -1,5 +1,5 @@
 // miniprogram/pages/music/music.js
-let data = require('../../staic/js/lyrics.js');
+// let data = require('../../static/js/lyrics.js');
 
 Page({
 
