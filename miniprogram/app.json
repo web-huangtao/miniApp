@@ -51,6 +51,8 @@
     "van-icon": "/miniprogram_npm/vant-weapp/icon/index",
     "van-transition": "/miniprogram_npm/vant-weapp/transition/index",
     "van-field": "/miniprogram_npm/vant-weapp/field/index",
+    "van-tab": "/miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs": "/miniprogram_npm/vant-weapp/tabs/index",
     "image-cropper": "/miniprogram_npm/image-cropper/image-cropper"
   },
   "requiredBackgroundModes": [

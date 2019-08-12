@@ -1,1 +1,10 @@
 /* miniprogram/pages/map/index.wxss */
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 30rpx;
+  margin: 20rpx 0;
+  box-sizing: border-box;
+}

@@ -26,9 +26,9 @@
     <van-cell
       icon="label-o"
       is-link
-      title="单元格"
+      title="地图"
       link-type="navigateTo"
-      url=""
+      url="/pages/map/index"
     />
     <van-cell
       icon="shop-o" 
