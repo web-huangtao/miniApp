@@ -8,3 +8,8 @@
   margin: 20rpx 0;
   box-sizing: border-box;
 }
+.line {
+  font-size: 28rpx;
+  color: rgba(69,90,100,.6);
+  padding-left: 30rpx;
+}

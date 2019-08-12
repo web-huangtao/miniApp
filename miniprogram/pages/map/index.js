@@ -12,6 +12,7 @@ Page({
     scale: 16, // 缩放比例
     markers: [], // 添加标注
     polyline: [], // 路线
+    currentCity: '', // 当前城市
     currentPosition: '', // 当前位置
     startPositionText: '我的位置', // 开始位置文案显示
     startPosition: '', // 开始位置
@@ -20,7 +21,9 @@ Page({
     startLatitude: 0, // 开始纬度
     endLongitude: 0, // 结束经度
     endLatitude: 0, // 结束纬度
-    isLine: false // 是否显示路线
+    isLine: false, // 是否显示路线
+    steps: [], // 路线步骤
+    activeNames: ['1'] // 折叠面板
   },
 
   /**
@@ -50,6 +53,7 @@ Page({
           },
           success: res => {
             this.setData({
+              currentCity: res.result.address_component.city,
               currentPosition: res.result.address,
               startPosition: res.result.address
             })
@@ -103,6 +107,7 @@ Page({
    * 地址解析经纬度
    */
   analysis(destination) {
+    const { currentCity } = this.data
     return new Promise((resolve, reject) => {
       qqmapsdk.geocoder({
         address: destination,
@@ -153,7 +158,7 @@ Page({
   /**
    * 切换方式
    */
-  onChange(e) {
+  changeType(e) {
     let val = e.detail.index
     switch(val) {
       case 0:
@@ -186,9 +191,14 @@ Page({
         latitude: endLatitude,
         longitude: endLongitude
       },
+      policy: type === 'transit' ? 'LEAST_TRANSFER' : '',
       success: res => {
         console.log(res.result.routes)
         if (type === 'transit') {
+          this.setData({
+            steps: res.result.routes[0].steps,
+            polyline: []
+          })
           return
         }
         var coors = res.result.routes[0].polyline, pl = [];
@@ -203,13 +213,26 @@ Page({
         }
         this.setData({
           isLine: true,
+          steps: res.result.routes[0].steps,
           polyline: [{
             points: pl,
             color: '#FF0000DD',
             width: 4
           }]
         })
+      },
+      fail: err => {
+        console.log(err)
       }
+    })
+  },
+
+  /**
+   * 打开折叠面板
+   */
+  onChange(event) {
+    this.setData({
+      activeNames: event.detail
     })
   }
 })
