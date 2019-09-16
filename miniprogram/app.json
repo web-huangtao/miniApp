@@ -5,7 +5,8 @@
     "pages/user/user",
     "pages/show/show",
     "pages/music/music",
-    "pages/map/index"
+    "pages/map/index",
+    "pages/editor/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

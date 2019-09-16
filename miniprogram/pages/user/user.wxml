@@ -33,7 +33,9 @@
     <van-cell
       icon="shop-o" 
       is-link
-      title="单元格"
+      title="富文本"
+      link-type="navigateTo"
+      url="/pages/editor/index"
     />
     <van-cell
       icon="setting-o"
