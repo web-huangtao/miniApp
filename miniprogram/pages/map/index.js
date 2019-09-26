@@ -14,7 +14,7 @@ Page({
     polyline: [], // 路线
     currentCity: '', // 当前城市
     currentPosition: '', // 当前位置
-    startPositionText: '我的位置', // 开始位置文案显示
+    startPositionVal: '我的位置', // 开始位置文案显示
     startPosition: '', // 开始位置
     endPosition: '', // 结束位置
     startLongitude: 0, // 开始经度
@@ -70,11 +70,11 @@ Page({
    */
   getStartPosition(e) {
     this.setData({
-      startPositionText: e.detail.value,
+      startPositionVal: e.detail.value,
       startPosition: e.detail.value
     })
-    const { startPositionText } = this.data
-    if (startPositionText !== '我的位置' && e.detail.value) {
+    const { startPositionVal } = this.data
+    if (startPositionVal !== '我的位置' && e.detail.value) {
       this.analysis(e.detail.value).then(res => {
         this.setData({
           latitude: res.latitude,
@@ -108,6 +108,10 @@ Page({
    */
   analysis(destination) {
     const { currentCity } = this.data
+    // let address = destination
+    // if (destination.indexOf(currentCity.slice(0, 2)) == -1) {
+    //   address = currentCity.slice(0, 2) + destination
+    // }
     return new Promise((resolve, reject) => {
       qqmapsdk.geocoder({
         address: destination,
@@ -122,7 +126,10 @@ Page({
           })
         },
         fail: err => {
-          console.log(err)
+          wx.showToast({
+            title: err.message,
+            icon: 'none'
+          })
           reject(err)
         }
       })
@@ -133,7 +140,21 @@ Page({
    * 确定按钮
    */
   sure() {
-    const { startLatitude, startLongitude, endLatitude, endLongitude } = this.data
+    const { startPositionVal, startLatitude, startLongitude, endPosition, endLatitude, endLongitude } = this.data
+    if (!startPositionVal) {
+      wx.showToast({
+        title: '请输入出发地',
+        icon: 'none'
+      })
+      return
+    } else if (!endPosition) {
+      wx.showToast({
+        title: '请输入目的地',
+        icon: 'none'
+      })
+      return
+    }
+    console.log(startLatitude, startLongitude)
     this.setData({
       scale: 13,
       markers: [{
@@ -193,7 +214,6 @@ Page({
       },
       policy: type === 'transit' ? 'LEAST_TRANSFER' : '',
       success: res => {
-        console.log(res.result.routes)
         if (type === 'transit') {
           this.setData({
             steps: res.result.routes[0].steps,
@@ -222,7 +242,10 @@ Page({
         })
       },
       fail: err => {
-        console.log(err)
+        wx.showToast({
+          title: err.message,
+          icon: 'none'
+        })
       }
     })
   },

@@ -8,11 +8,11 @@
   bindmarkertap="markertap"
   polyline="{{polyline}}"
   show-location
-  style="width: 100%; height: 250px;"
+  style="width: 100%; height: 50%;"
 />
 <van-cell-group class="main">
   <van-field
-    value="{{ startPositionText }}"
+    value="{{ startPositionVal }}"
     center
     clearable
     label=""
